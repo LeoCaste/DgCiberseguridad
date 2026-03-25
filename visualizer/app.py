@@ -1,4 +1,3 @@
-
 import os
 import time
 import streamlit as st
@@ -15,13 +14,11 @@ r = get_redis_client()
 
 st.set_page_config(page_title="GitHub Minero", layout="wide")
 
-st.title(f"Ranking en Tiempo Real: Top-{top_n} Funciones en GitHub")
-
-
 st.sidebar.header("Parámetros")
 top_n = st.sidebar.slider("Cantidad de palabras a mostrar:", min_value=5, max_value=50, value=15)
 lang_filter = st.sidebar.radio("Filtrar por Lenguaje", ["Global", "Python", "Java"])
 
+st.title(f"Ranking en Tiempo Real: Top-{top_n} Funciones en GitHub")
 
 redis_key = "word_ranking"
 if lang_filter == "Python":
@@ -38,12 +35,12 @@ if data:
     col1, col2 = st.columns([1, 3])
     
     with col1:
-        st.dataframe(df, use_container_width=True)
+        st.dataframe(df, width='stretch')
         
     with col2:
         st.bar_chart(df)
 else:
-    st.info("Esperando datos del iner. (Esto puede tomar unos segundos la primera vez)")
+    st.info("Esperando datos del miner. (Esto puede tomar unos segundos la primera vez)")
 
 time.sleep(2)
 st.rerun()
