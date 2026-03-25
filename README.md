@@ -25,7 +25,7 @@ Para ser de facil montaje, todo el sistema está orquestado. Solo se necesita cl
 
 ```bash
 # 1. Clonar el repositorio
-git clone <Link de github donde se clonará>
+git clone <https://github.com/LeoCaste/DgCiberseguridad>
 cd DgCiberseguridad
 
 # 2. Levantar la infraestructura
