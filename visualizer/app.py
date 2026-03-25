@@ -13,13 +13,15 @@ def get_redis_client():
 
 r = get_redis_client()
 
-st.set_page_config(page_title="GitHub Function Miner", layout="wide")
+st.set_page_config(page_title="GitHub Minero", layout="wide")
 
-st.title("Ranking en Tiempo Real: Funciones en GitHub")
+st.title(f"Ranking en Tiempo Real: Top-{top_n} Funciones en GitHub")
+
 
 st.sidebar.header("Parámetros")
-top_n = st.sidebar.slider("Top-N palabras", min_value=5, max_value=50, value=15)
+top_n = st.sidebar.slider("Cantidad de palabras a mostrar:", min_value=5, max_value=50, value=15)
 lang_filter = st.sidebar.radio("Filtrar por Lenguaje", ["Global", "Python", "Java"])
+
 
 redis_key = "word_ranking"
 if lang_filter == "Python":
